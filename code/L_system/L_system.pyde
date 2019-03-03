@@ -1,11 +1,15 @@
 def setup():
     axiom = 'X'
     rules = {'X':'F+[[X]-X]-F[-FX]+X','F':'FF'}
+    
     global genstring
     genstring = axiom
     for i in range(6):
-        for r in rules:
-            genstring = genstring.replace(r,rules[r])
+        newstring = []
+        for c in genstring:
+            newstring.append(rules.get(c,c))
+        genstring = ''.join(newstring)
+    
     print len(genstring)
     
     size(400,400)
